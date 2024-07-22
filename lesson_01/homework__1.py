@@ -1,22 +1,18 @@
 print("Hello world!")
 
-# task 02 == Виправте синтаксичні помилки
 hello = "Hello"
 world = "world"
 if True:
     print(f"{hello} {world}!")
 
-# task 03  == Вcтавте пропущену змінну у ф-цію print
+
 for letter in "Hello world!":
     print(letter)
 
-# task 04 == Зробіть так, щоб кількість бананів була
-# завжди в чотири рази більша, ніж яблук
 apples: int = 2
 banana: int = apples * 4
 print('Кількість бананів =',banana,', а кількість яблук =',apples,'.')
 
-# task 05 == виправте назви змінних
 storona_1 = 1
 storona_2 = 2
 storona_3 = 3
