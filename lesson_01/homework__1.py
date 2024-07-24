@@ -18,8 +18,7 @@ storona_2 = 2
 storona_3 = 3
 storona_4 = 4
 
-# task 06 == Порахуйте периметр фігури з task 05
-# та виведіть його для користувача
+
 perimetery = storona_1 + storona_2 + storona_3 + storona_4
 print('Периметр фігури =', perimetery)
 
