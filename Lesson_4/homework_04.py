@@ -24,7 +24,8 @@ rolling in wealth."""
 """ Дані у строці adwentures_of_tom_sawer розбиті випадковим чином, через помилку.
 треба замінити кінець абзацу на пробіл .replace("\n", " ")"""
 
-Не_до_кінця_зрозумів = "умову таски"
+replace_string = adwentures_of_tom_sawer.replace("\n", "")
+print(replace_string)
 
 # task 02 ==
 """ Замініть .... на пробіл
@@ -56,7 +57,9 @@ print("\n")
 # task 06
 """ Виведіть позицію, на якій слово Tom зустрічається вдруге
 """
-print(adwentures_of_tom_sawer.index("Tom"))
+first_Tom = adwentures_of_tom_sawer.find("Tom")
+second_Tom = adwentures_of_tom_sawer.find("Tom",first_Tom + 1)
+print(f"{second_Tom}")
 print("\n")
 # task 07
 """ Розділіть змінну adwentures_of_tom_sawer по кінцю речення.
@@ -69,7 +72,9 @@ print("\n")
 """ Виведіть четверте речення з adwentures_of_tom_sawer_sentences.
 Перетворіть рядок у нижній регістр.
 """
-print(adwentures_of_tom_sawer[16:21])
+
+four_line = lower_cases[431:536]
+print(four_line)
 print("\n")
 # task 09
 """ Перевірте чи починається якесь речення з "By the time".
