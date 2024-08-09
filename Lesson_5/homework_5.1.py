@@ -77,10 +77,20 @@ car_data = {
   'Ford F-Series': ('gray', 2021, 3.5, 'pickup', 50000),
   'Nissan Titan': ('silver', 2018, 5.6, 'pickup', 35000)
 }
+
+def find_matching_cars(car_data, criteria):
+  year_min, engine_min, price_max = criteria
+
+  return sorted(
+    (car for car, details in car_data.items()
+     if details[1] >= year_min and details[2] >= engine_min and details[4] <= price_max),
+    key=lambda car: car_data[car][4]
+  )[:5]
+
 search_criteria = (2017, 1.6, 36000)
+result = find_matching_cars(car_data, search_criteria)
+
+for car in result:
+  print(f"{car}: {car_data[car]}")
 
 
-sorted_cars = sorted(car_data.items(), key=lambda item: item[1][4])
-
-for car in sorted_cars[:5]:
-    print(car)
