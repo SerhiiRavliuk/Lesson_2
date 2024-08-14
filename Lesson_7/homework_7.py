@@ -14,7 +14,7 @@ def multiplication_table(number):
 
 multiplication_table(3)
 
-# task 2
+# task_2
 """  Написати функцію, яка обчислює суму двох чисел.
 """
 def calculated(first_figure : int, second_figure : int):
