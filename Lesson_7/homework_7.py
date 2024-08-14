@@ -1,4 +1,4 @@
-# task_1
+# task 1
 
 def multiplication_table(number):
     multiplier = 1
