@@ -1,33 +1,18 @@
 # task 1
-""" Задача - надрукувати табличку множення на задане число, але
-лише до максимального значення для добутку - 25.
-Код майже готовий, треба знайти помилки та випраавити\доповнити.
-"""
-
 
 def multiplication_table(number):
-    # Initialize the appropriate variable
     multiplier = 1
 
-    # Complete the while loop condition.
     while multiplier * number:
         result = number * multiplier
-        # десь тут помила, а може не одна
+
         if result > 25:
-            # Enter the action to take if the result is greater than 25
+
             break
         else:print(str(number) + "x" + str(multiplier) + "=" + str(result))
         multiplier += 1
 
-        # Increment the appropriate variable
 multiplication_table(3)
-# Should print:
-# 3x1=3
-# 3x2=6
-# 3x3=9
-# 3x4=12
-# 3x5=15
-
 
 # task 2
 """  Написати функцію, яка обчислює суму двох чисел.
@@ -52,12 +37,12 @@ print(result)
 # task 4
 """  Написати функцію, яка приймає рядок та повертає його у зворотному порядку.
 """
-# our_string :str = input("Напишіть рядок, який потрібно повернути у зворотньому напрямку: ")
-# def reversed_input(input_string):
-#     return (input_string[::-1])
-#
-# result = reversed_input(our_string)
-# print(result)
+our_string :str = input("Напишіть рядок, який потрібно повернути у зворотньому напрямку: ")
+def reversed_input(input_string):
+    return (input_string[::-1])
+
+result = reversed_input(our_string)
+print(result)
 
 
 # task 5
@@ -77,61 +62,54 @@ print(result)
 не є підрядком першого рядка."""
 
 def find_substring(str1, str2):
-    index = str1.find(str2)  # знайти індекс першого входження str2 у str1
+    index = str1.find(str2)
     return index
 
 str1 = "Hello, world!"
 str2 = "world"
-print(find_substring(str1, str2))  # поверне 7
+print(find_substring(str1, str2))
 
 str1 = "The quick brown fox jumps over the lazy dog"
 str2 = "cat"
-print(find_substring(str1, str2))  # поверне -1
+print(find_substring(str1, str2))
 
-# # task 7
-# """Порахувати кількість унікальних символів в строці. Якщо їх більше 10 - вивести в консоль True,
-# інакше - False. Строку отримати за допомогою функції input()"""
-#
-# def unique_symbols_count(symbols: str) -> int:
-#     unique_symbols = []
-#     symbols = symbols.lower()
-#
-#     for char in symbols:
-#         if char not in unique_symbols:
-#             unique_symbols.append(char)
-#
-#     return len(unique_symbols)
-# def more_than_10(count: int) -> bool:
-#     return count > 10
-#
-# string_input = input("Введіть символи: ")
-#
-# unique_count = unique_symbols_count(string_input)
-# print(f"Кількість унікальних символів: {unique_count}")
-#
-# print(more_than_10(unique_count))
+
+
+def unique_symbols_count(symbols: str) -> int:
+    unique_symbols = []
+    symbols = symbols.lower()
+
+    for char in symbols:
+        if char not in unique_symbols:
+            unique_symbols.append(char)
+
+    return len(unique_symbols)
+def more_than_10(count: int) -> bool:
+    return count > 10
+
+string_input = input("Введіть символи: ")
+
+unique_count = unique_symbols_count(string_input)
+print(f"Кількість унікальних символів: {unique_count}")
+
+print(more_than_10(unique_count))
 
 # task 8
-# Є ліст з числами, порахуйте сумму усіх ПАРНИХ чисел в цьому лісті
+
 list_numbers: list[int] = [1,2,3,4,5,6,9,12]
 sum_of_numbers = list([pairs for pairs in list_numbers if pairs % 2 == 0])
 
 print(sum(sum_of_numbers))
-# task 9
-# Є list з даними lst1 = ['1', '2', 3, True, 'False', 5, '6', 7, 8, 'Python', 9, 0, 'Lorem Ipsum'].
-# Напишіть код, який свормує новий list (наприклад lst2), який містить лише змінні типу стрінг,
-# які присутні в lst1. Данні в лісті можуть бути будь якими
+
+
+
 lst1 = ['1', '2', 3, True, 'False', 5, '6', 7, 8, 'Python', 9, 0, 'Lorem Ipsum']
 
 lst2 : list[str] = ([strings for strings in lst1 if isinstance(strings, str)])
 print(lst2)
 
-# task 10
-# Існує деяка інформація про автомобілі з кольором, роком випуску,
-# об('ємом двигуна, типом автомобіля та ціною. Маємо критерії пошуку у вигляді кортежу (рік ≥,'
-#  об(')єм двигуна ≥, ціна ≤). Напишіть код, який допоможе нам отримати автомобілі, які відповідають '
-# критеріям пошуку. Автомобілі повинні бути відсортовані за зростанням ціни.
-# Ми повинні вивести до п')яти (5) перших знайдених елементів
+
+
 car_data = {
   'Mercedes': ('silver', 2019, 1.8, 'sedan', 50000),
   'Audi': ('black', 2020, 2.0, 'sedan', 55000),
