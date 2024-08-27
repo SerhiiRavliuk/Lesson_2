@@ -1,10 +1,10 @@
 import unittest
 from homework_9 import sum_of_numbers
-from homework_9 import cheack_str
-from homework_9 import check_number_divisible_by_2
 from homework_9 import max_letters
 from homework_9 import list_of_words
 from homework_9 import get_word_with_h
+from homework_9 import cheack_that_is_str
+from homework_9 import get_number_that_is_divisible_by_2
 
 class My_first_tests(unittest.TestCase):
 
@@ -20,20 +20,20 @@ class My_first_tests(unittest.TestCase):
 
     def test_positive_is_str(self):
         some_str = 'Slavik'
-        result = cheack_str(some_str)
+        result = cheack_that_is_str(some_str)
         self.assertTrue(result, f'{result} is string')
 
     def test_negative_is_str(self):
         some_str = 3.5
-        result = cheack_str(some_str)
+        result = cheack_that_is_str(some_str)
         self.assertTrue(not result, msg= f'{result} is not string')
 
     def test_positive_divisible_by_2(self):
-        result = check_number_divisible_by_2(8)
+        result = get_number_that_is_divisible_by_2(8)
         self.assertTrue(result, f'{result} is not divisible by 2')
 
     def test_negative_divisible_by_2(self):
-        result = check_number_divisible_by_2(5)
+        result = get_number_that_is_divisible_by_2(5)
         self.assertTrue(not result, f'{result} is not divisible by 2')
 
     def test_max_letters(self):

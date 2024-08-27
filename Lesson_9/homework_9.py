@@ -8,12 +8,12 @@ def max_letters(word: list[str]):
 
 list_of_words: list[str] = ["Serhii", "Stepan", "Max", "Margarita"]
 
-def cheack_str(some_str : str):
-        if type(some_str) is str:
-            return some_str
-def check_number_divisible_by_2(element) :
+def cheack_that_is_str(some_str : str):
+        if isinstance(some_str) is str:
+            return True
+def get_number_that_is_divisible_by_2(element) :
     if element % 2 ==0:
-        return element
+        return True
 
 def get_word_with_h(word: str) -> str:
 
@@ -21,4 +21,5 @@ def get_word_with_h(word: str) -> str:
 
     if 'h' in word_lower:
         return word
-    return None
+    else:
+        raise ValueError('No "h" character found in word')
