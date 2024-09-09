@@ -1,0 +1,18 @@
+2024-09-09 14:16:18,739 - ERROR - File not found: /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/localizations_en.json
+2024-09-09 14:16:18,739 - ERROR - File not found: /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/localizations_ru.json
+2024-09-09 14:16:18,739 - ERROR - File not found: /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json
+2024-09-09 14:16:18,739 - ERROR - File not found: /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/swagger.json
+2024-09-09 14:18:38,428 - ERROR - Error reading /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json: Expecting ',' delimiter: line 8 column 1 (char 324)
+2024-09-09 14:18:38,428 - ERROR - Invalid JSON file: /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json
+2024-09-09 14:19:28,809 - ERROR - Error reading /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json: Expecting ',' delimiter: line 8 column 1 (char 324)
+2024-09-09 14:19:28,809 - ERROR - Invalid JSON file: /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json
+2024-09-09 14:19:37,856 - ERROR - Error reading /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json: Expecting ',' delimiter: line 8 column 1 (char 324)
+2024-09-09 14:19:37,856 - ERROR - Invalid JSON file: /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json
+2024-09-09 14:20:36,090 - ERROR - Error reading /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json: Expecting ',' delimiter: line 8 column 1 (char 324)
+2024-09-09 14:20:36,090 - ERROR - Invalid JSON file: /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json
+2024-09-09 14:20:47,280 - ERROR - Error reading /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json: Expecting ',' delimiter: line 8 column 1 (char 324)
+2024-09-09 14:20:47,280 - ERROR - Invalid JSON file: /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json
+2024-09-09 14:21:22,541 - ERROR - Error reading /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json: Expecting ',' delimiter: line 8 column 1 (char 324)
+2024-09-09 14:21:22,541 - ERROR - Invalid JSON file: /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json
+2024-09-09 14:21:30,216 - ERROR - Error reading /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json: Expecting ',' delimiter: line 8 column 1 (char 324)
+2024-09-09 14:21:30,216 - ERROR - Invalid JSON file: /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/Lesson_13/login.json
