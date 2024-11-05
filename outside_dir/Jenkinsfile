@@ -1,19 +1,55 @@
 pipeline {
-    agent { label 'MyAgent' }
+    agent any
+
+    environment {
+        VIRTUAL_ENV = ".venv"
+    }
+
     stages {
-        stage('Build') {
+        stage('Checkout Code') {
             steps {
-                echo 'Building the project...'
+                git 'https://github.com/SerhiiRavliuk/Lesson_2.git'
             }
         }
-        stage('Test') {
+
+        stage('Install Dependencies') {
             steps {
-                echo 'Running tests...'
+                script {
+                    sh '''
+                        python3 -m venv $VIRTUAL_ENV
+                        source $VIRTUAL_ENV/bin/activate
+                        pip install -r requirements.txt
+                    '''
+                }
             }
         }
-        stage('Deploy') {
+
+        stage('Run Tests') {
             steps {
-                echo 'Deploying the project...'
+                script {
+                    sh '''
+                        source $VIRTUAL_ENV/bin/activate
+                        pytest outside_dir/tests/ --maxfail=1 --disable-warnings -q
+                    '''
+                }
+            }
+        }
+
+        stage('Publish Test Results') {
+            steps {
+                junit '**/test-*.xml'
+            }
+        }
+    }
+
+    post {
+        always {
+            script {
+                emailext(
+                    subject: "Test Results for ${currentBuild.fullDisplayName}",
+                    body: "Please find the test results attached for ${currentBuild.fullDisplayName}.",
+                    to: "InsertYour@Mail.Here"
+                )
             }
         }
     }
