@@ -27,9 +27,25 @@ pipeline {
                 script {
                     sh '''
                         source $VIRTUAL_ENV/bin/activate
-                        pytest outside_dir/tests/ --maxfail=1 --disable-warnings -q --junitxml=outside_dir/pytest-report.xml
+                        pytest outside_dir/tests/ --maxfail=1 --disable-warnings -q --alluredir=allure-results
                     '''
                 }
+            }
+        }
+
+        stage('Generate Allure Report') {
+            steps {
+                script {
+                    sh '''
+                        allure generate allure-results --clean -o allure-report
+                    '''
+                }
+            }
+        }
+
+        stage('Publish Allure Report') {
+            steps {
+                allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
             }
         }
 
@@ -46,7 +62,8 @@ pipeline {
                 emailext(
                     subject: "Test Results for ${currentBuild.fullDisplayName}",
                     body: "Please find the test results attached for ${currentBuild.fullDisplayName}.",
-                    to: "serhii.ravliuk@gmail.com"
+                    to: "serhii.ravliuk@gmail.com",
+                    attachmentsPattern: "allure-report/*"
                 )
             }
         }
