@@ -27,7 +27,7 @@ pipeline {
                 script {
                     sh '''
                         source $VIRTUAL_ENV/bin/activate
-                        pytest outside_dir/tests/ --maxfail=1 --disable-warnings -q
+                        pytest outside_dir/tests/ --maxfail=1 --disable-warnings -q --junitxml=outside_dir/pytest-report.xml
                     '''
                 }
             }
@@ -35,7 +35,7 @@ pipeline {
 
         stage('Publish Test Results') {
             steps {
-                junit '**/test-*.xml'
+                junit 'outside_dir/pytest-report.xml'
             }
         }
     }
