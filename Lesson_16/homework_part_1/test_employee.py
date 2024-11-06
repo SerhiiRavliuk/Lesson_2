@@ -1,6 +1,6 @@
 from assertpy import assert_that
 
-from Lesson_16_1.employee import TeamLead
+from Lesson_30.employee import TeamLead
 
 
 class TestEmployee:
@@ -25,7 +25,9 @@ class TestEmployee:
         (assert_that(self.qa_automation_team_lead.__dict__,"Desired user's attrs aren't equal to desired dict of attrs")
          .is_equal_to(self.expected_mark_attrs))
 
+
     def test_employee_attrs_negative(self):
         (assert_that(self.qa_automation_team_lead.__dict__,
                      "Desired user's attrs are equal to desired dict of attrs")
          .is_equal_to(self.failed_mark_attrs))
+
