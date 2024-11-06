@@ -46,7 +46,7 @@ pipeline {
                 emailext(
                     subject: "Test Results for ${currentBuild.fullDisplayName}",
                     body: "Please find the test results attached for ${currentBuild.fullDisplayName}.",
-                    to: "InsertYour@Mail.Here"
+                    to: "serhii.ravliuk@gmail.com"
                 )
             }
         }
