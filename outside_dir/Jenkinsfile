@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/SerhiiRavliuk/Lesson_2.git'
+                git branch: 'main', url: 'https://github.com/SerhiiRavliuk/Lesson_2.git'
             }
         }
 
