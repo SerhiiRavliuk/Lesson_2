@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: aqa_hillel_user
+      POSTGRES_PASSWORD: aqa_python
+      POSTGRES_DB: aqa_hillel_db
+    ports:
+      - "503:80"
+
+  app:
+    build: .
+    depends_on:
+      - db
