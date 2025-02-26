@@ -43,3 +43,4 @@ def delete_student(student_name):
     if student:
         session.delete(student)
         session.commit()
+

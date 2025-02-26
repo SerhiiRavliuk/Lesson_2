@@ -7,7 +7,6 @@ def home():
     print("Запит на домашню сторінку")
     return render_template('dz.html')
 
-
 @app.route('/dz_frame1')
 def frame1():
     return render_template('dz_frame1.html')
