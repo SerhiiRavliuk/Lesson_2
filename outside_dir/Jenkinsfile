@@ -4,7 +4,7 @@ pipeline {
         VIRTUAL_ENV = ".venv"
     }
     stages {
-        stage('Checkout Code') {
+        stage('Checkout Code from GitHub') {
             steps {
                 git branch: 'main', url: 'https://github.com/SerhiiRavliuk/Lesson_2.git'
             }
@@ -27,12 +27,10 @@ pipeline {
                 script {
                     sh '''
                         source $VIRTUAL_ENV/bin/activate
-                        pytest outside_dir/tests/ --maxfail=1 --disable-warnings -q --junitxml=outside_dir/pytest-report.xml
+                        pytest ./lesson_28/tests --maxfail=1 --disable-warnings -q --junitxml=outside_dir/pytest-report.xml
                     '''
                 }
             }
-
-
         }
 
         stage('Publish Test Results') {
@@ -45,7 +43,7 @@ pipeline {
     post {
         always {
             script {
-                emailext(
+                email text(
                     subject: "Test Results for ${currentBuild.fullDisplayName}",
                     body: "Please find the test results attached for ${currentBuild.fullDisplayName}.",
                     to: "serhii.ravliuk@gmail.com"
