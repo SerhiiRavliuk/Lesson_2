@@ -1,0 +1,5 @@
+pytest
+requests
+flask
+assertpy
+allure-pytest
