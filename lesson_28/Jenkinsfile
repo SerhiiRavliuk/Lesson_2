@@ -102,7 +102,7 @@ pipeline {
             }
         }
 
-        // Якщо хочете автоматично відкривати Allure звіт на сервері:
+        // Автоматичне відкривання Allure звіту на сервері:
         stage('Serve Allure Report Locally') {
             steps {
                 script {
