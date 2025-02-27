@@ -2,13 +2,14 @@ pipeline {
     agent any
 
     environment {
+        BASE_URL = '/Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/lesson_28'
+        REQUIREMENTS_FILE = "${BASE_URL}/requirements.txt"
         PYTHON_VERSION = '3.11.9'
         VENV_DIR = '.venv'
         REPO_URL = 'https://github.com/SerhiiRavliuk/Lesson_2.git'
-        REQUIREMENTS_FILE = '/Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/lesson_28/requirements.txt'
-        TEST_DIR = '/Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/lesson_28/tests/test_automation.py'
-        ALLURE_REPORT_PATH = '/Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/lesson_28/allure-report'  // Шлях для звіту Allure
-        ALLURE_RESULTS_PATH = '/Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/lesson_28/allure-results' // Шлях для результатів тестів Allure
+        TEST_DIR = "${BASE_URL}/tests/test_automation.py"
+        ALLURE_REPORT_PATH = "${BASE_URL}/allure-report"
+        ALLURE_RESULTS_PATH = "${BASE_URL}/allure-results"
     }
 
     stages {
@@ -55,16 +56,13 @@ pipeline {
             steps {
                 script {
                     sh """
-                        # Перевірте поточну директорію
-                        pwd
-
-                        # Активуйте віртуальне середовище
+                        # Activate virtual environment
                         source ${VENV_DIR}/bin/activate
 
-                        # Оновіть pip та встановіть залежності
+                        # Update pip and install dependencies
                         pip install --upgrade pip
                         pip install -r ${REQUIREMENTS_FILE}
-                        pip install allure-pytest  # Інсталяція Allure для pytest
+                        pip install allure-pytest  # Install Allure for pytest
                     """
                 }
             }
@@ -86,7 +84,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                        # Генерація звіту Allure
+                        # Generate Allure report
                         allure generate ${ALLURE_RESULTS_PATH} --clean -o ${ALLURE_REPORT_PATH}
                     """
                 }
@@ -101,6 +99,18 @@ pipeline {
                     report: "${ALLURE_REPORT_PATH}",
                     results: "${ALLURE_RESULTS_PATH}"
                 ])
+            }
+        }
+
+        // Якщо хочете автоматично відкривати Allure звіт на сервері:
+        stage('Serve Allure Report Locally') {
+            steps {
+                script {
+                    sh """
+                        # Serve the Allure report locally
+                        allure serve ${ALLURE_REPORT_PATH} &
+                    """
+                }
             }
         }
     }
