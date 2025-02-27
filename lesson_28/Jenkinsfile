@@ -53,20 +53,23 @@ pipeline {
         }
 
         stage('Activate Virtual Environment and Install Dependencies') {
-            steps {
-                script {
-                    sh """
-                        # Activate the virtual environment
-                        source ${VENV_DIR}/bin/activate
+    steps {
+        script {
+            sh """
+                # Перевірте поточну директорію
+                pwd
 
-                        # Upgrade pip and install dependencies
-                        pip install --upgrade pip
-                        pip install -r ${REQUIREMENTS_FILE}
-                        pip install allure-pytest  # Інсталяція Allure для pytest
-                    """
-                }
-            }
+                # Активуйте віртуальне середовище
+                source ${VENV_DIR}/bin/activate
+
+                # Оновіть pip та встановіть залежності
+                pip install --upgrade pip
+                pip install -r requirements.txt
+                pip install allure-pytest  # Інсталяція Allure для pytest
+            """
         }
+    }
+}
 
         stage('Run Tests and Generate Allure Results') {
             steps {
