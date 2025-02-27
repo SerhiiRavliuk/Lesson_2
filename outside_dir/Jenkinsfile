@@ -1,12 +1,10 @@
 pipeline {
     agent any
-
     environment {
         VIRTUAL_ENV = ".venv"
     }
-
     stages {
-        stage('Checkout Code') {
+        stage('Checkout Code from GitHub') {
             steps {
                 git branch: 'main', url: 'https://github.com/SerhiiRavliuk/Lesson_2.git'
             }
@@ -18,7 +16,7 @@ pipeline {
                     sh '''
                         python3 -m venv $VIRTUAL_ENV
                         source $VIRTUAL_ENV/bin/activate
-                        pip install -r requirements.txt
+                        pip install -r /Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/outside_dir/requirements.txt
                     '''
                 }
             }
@@ -29,7 +27,7 @@ pipeline {
                 script {
                     sh '''
                         source $VIRTUAL_ENV/bin/activate
-                        pytest outside_dir/tests/ --maxfail=1 --disable-warnings -q
+                        pytest ./lesson_28/tests --maxfail=1 --disable-warnings -q --junitxml=outside_dir/pytest-report.xml
                     '''
                 }
             }
@@ -37,7 +35,7 @@ pipeline {
 
         stage('Publish Test Results') {
             steps {
-                junit '**/test-*.xml'
+                junit 'outside_dir/pytest-report.xml'
             }
         }
     }
@@ -45,10 +43,10 @@ pipeline {
     post {
         always {
             script {
-                emailext(
+                email text(
                     subject: "Test Results for ${currentBuild.fullDisplayName}",
                     body: "Please find the test results attached for ${currentBuild.fullDisplayName}.",
-                    to: "InsertYour@Mail.Here"
+                    to: "serhii.ravliuk@gmail.com"
                 )
             }
         }
