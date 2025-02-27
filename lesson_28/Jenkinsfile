@@ -28,13 +28,14 @@ pipeline {
                         if [ ! -d "\$HOME/.pyenv" ]; then
                             echo "Installing pyenv..."
                             curl https://pyenv.run | bash
-
-                            export PATH="\$HOME/.pyenv/bin:\$PATH"
-                            eval "\$(pyenv init --path)"
-                            eval "\$(pyenv init -)"
                         else
                             echo "pyenv already installed."
                         fi
+
+                        # Add pyenv to the PATH
+                        export PATH="\$HOME/.pyenv/bin:\$PATH"
+                        eval "\$(pyenv init --path)"
+                        eval "\$(pyenv init -)"
 
                         # Install specified Python version
                         pyenv install -s ${PYTHON_VERSION}
@@ -49,6 +50,7 @@ pipeline {
                         fi
                     """
                 }
+
             }
         }
 
