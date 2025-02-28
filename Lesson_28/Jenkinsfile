@@ -2,14 +2,15 @@ pipeline {
     agent any
 
     environment {
-        BASE_PATH = '/Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/lesson_28'
-        REQUIREMENTS_FILE = "${BASE_PATH}/requirements.txt"
+        BASE_URL = '/Users/serhii.ravliuk/PycharmProjects/Lesson_2_1/lesson_28'
+        REQUIREMENTS_FILE = "${BASE_URL}/requirements.txt"
         PYTHON_VERSION = '3.11.9'
-        VENV_DIR = "${BASE_PATH}/.venv"
+        VENV_DIR = '.venv'
         REPO_URL = 'https://github.com/SerhiiRavliuk/Lesson_2.git'
-        TEST_DIR = "${BASE_PATH}/tests/test_automation.py"
-        ALLURE_REPORT_PATH = "${BASE_PATH}/allure-report"
-        ALLURE_RESULTS_PATH = "${BASE_PATH}/allure-results"
+        TEST_DIR = "${BASE_URL}/tests/test_automation.py"
+        ALLURE_REPORT_PATH = "${BASE_URL}/allure-report"
+        ALLURE_RESULTS_PATH = "${BASE_URL}/allure-results"
+
     }
 
     stages {
@@ -108,4 +109,22 @@ pipeline {
                 script {
                     sh """
                         # Serve the Allure report locally
-                        allure serve
+                        allure serve ${ALLURE_REPORT_PATH} &
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            script {
+                email text(
+                    subject: "Test Results for ${currentBuild.fullDisplayName}",
+                    body: "Please find the test results attached for ${currentBuild.fullDisplayName}.",
+                    to: "serhii.ravliuk@gmail.com"
+                )
+            }
+        }
+    }
+}
