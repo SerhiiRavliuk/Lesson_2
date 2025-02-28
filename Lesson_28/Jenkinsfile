@@ -109,7 +109,8 @@ pipeline {
                 script {
                     sh """
                         # Serve the Allure report locally
-                        allure serve ${ALLURE_REPORT_PATH} &
+                        allure serve ${ALLURE_REPORT_PATH}
+
                     """
                 }
             }
